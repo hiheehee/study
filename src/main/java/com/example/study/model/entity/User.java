@@ -27,9 +27,9 @@ public class User {
 
     private String phoneNumber;
 
-    private  LocalDateTime registeredAt;
+    private LocalDateTime registeredAt;
 
-    private  LocalDateTime unregisteredAt;
+    private LocalDateTime unregisteredAt;
 
     private LocalDateTime createdAt;
 
@@ -38,12 +38,5 @@ public class User {
     private LocalDateTime updatedAt;
 
     private String updatedBy;
-
-    /*
-    // 1 : N
-    // LAZY = 지연로딩, EAGER = 즉시로딩
-    @OneToMany(fetch =  FetchType.LAZY, mappedBy = "item")
-    private List<OrderDetail> orderDetailList;
-*/
 }
 
