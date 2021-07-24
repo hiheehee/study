@@ -8,6 +8,7 @@ import java.util.Optional;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
+    /*
     // select * from user where account = ?
     Optional<User> findByAccount(String account);
 
@@ -16,4 +17,5 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     // select * from user where account = ? and email = ?
     Optional<User> findByAccountAndEmail(String account, String email);
+    */
 }
