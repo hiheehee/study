@@ -2,7 +2,6 @@ package com.example.study.repository;
 
 import com.example.study.StudyApplicationTests;
 import com.example.study.model.entity.Category;
-import com.example.study.model.entity.User;
 import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;

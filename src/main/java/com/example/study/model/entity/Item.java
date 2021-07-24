@@ -44,4 +44,6 @@ public class Item {
     private LocalDateTime updatedAt;
 
     private String updatedBy;
+
+    private Long partnerId;
 }
