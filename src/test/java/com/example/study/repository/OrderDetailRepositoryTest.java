@@ -1,5 +1,6 @@
 package com.example.study.repository;
 
+import com.example.study.StudyApplicationTests;
 import com.example.study.model.entity.OrderDetail;
 import org.junit.Assert;
 import org.junit.Test;
@@ -8,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
-public class OrderDetailRepositoryTest {
+public class OrderDetailRepositoryTest extends StudyApplicationTests {
     // Dependency Injection (DI)
     @Autowired
     private OrderDetailRepository orderDetailRepository;
