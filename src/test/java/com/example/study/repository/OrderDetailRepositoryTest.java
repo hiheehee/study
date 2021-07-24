@@ -15,8 +15,6 @@ public class OrderDetailRepositoryTest {
     @Test
     public void create() {
         OrderDetail orderDetail = new  OrderDetail();
-        orderDetail.setUserId(7L);
-        orderDetail.setItemId(1);
 
         OrderDetail newOrderDetail = orderDetailRepository.save(orderDetail);
 
