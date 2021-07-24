@@ -6,6 +6,7 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 
 public class OrderDetailRepositoryTest {
     // Dependency Injection (DI)
@@ -16,8 +17,16 @@ public class OrderDetailRepositoryTest {
     public void create() {
         OrderDetail orderDetail = new  OrderDetail();
 
-        OrderDetail newOrderDetail = orderDetailRepository.save(orderDetail);
+        orderDetail.setStatus("WAITING");
+        orderDetail.setArrivalDate(LocalDateTime.now());
+        orderDetail.setQuantity(1);
+        orderDetail.setTotalPrice(BigDecimal.valueOf(900000));
+        orderDetail.setOrderGroupId(1L);
+        orderDetail.setItemId(1L);
+        orderDetail.setCreatedAt(LocalDateTime.now());
+        orderDetail.setCreatedBy("AdminServer");
 
+        OrderDetail newOrderDetail = orderDetailRepository.save(orderDetail);
         Assert.assertNotNull(orderDetail);
     }
 }
