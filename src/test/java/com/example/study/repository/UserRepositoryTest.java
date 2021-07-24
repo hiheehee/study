@@ -13,6 +13,7 @@ import org.junit.Assert;
 import org.junit.Ignore;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestParam;
 
 public class UserRepositoryTest extends StudyApplicationTests {
@@ -46,6 +47,7 @@ public class UserRepositoryTest extends StudyApplicationTests {
     }
 
     @Test
+    @Transactional
     public void update(){
         Optional<User> user = userRepository.findById(2L);
         user.ifPresent(selectUser -> {
@@ -58,7 +60,16 @@ public class UserRepositoryTest extends StudyApplicationTests {
     }
 
     @Test
+    @Transactional
     public void delete(){
+        Optional<User> user = userRepository.findById(3L);
+        Assert.assertTrue(user.isPresent());
 
+        user.ifPresent(selectUser -> {
+            userRepository.delete(selectUser);
+        });
+
+        Optional<User> deleteUser = userRepository.findById(2L);
+        Assert.assertFalse(deleteUser.isPresent());
     }
 }
