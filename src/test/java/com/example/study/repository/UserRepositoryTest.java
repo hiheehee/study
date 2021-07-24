@@ -39,7 +39,7 @@ public class UserRepositoryTest extends StudyApplicationTests {
 
     @Test
     public void read(){
-        Optional<User> user = userRepository.findById(2L);
+        Optional<User> user = userRepository.findByAccount("TestUser03");
         user.ifPresent(selectUser -> {
             selectUser.getOrderDetailList().stream().forEach(detail ->{
                 Item item = detail.getItem();
