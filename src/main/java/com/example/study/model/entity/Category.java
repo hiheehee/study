@@ -8,38 +8,25 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Item {
+public class Category {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @GeneratedValue(strategy =  GenerationType.IDENTITY)
+    private  Long id;
 
-    private String status;
+    private  String type;
 
-    private String name;
-
-    private String title;
-
-    private String content;
-
-    private Integer price;
-
-    private String brandName;
-
-    private LocalDateTime registeredAt;
-
-    private LocalDateTime unregisteredAt;
+    private  String title;
 
     private LocalDateTime createdAt;
 
-    private String createdBy;
+    private  String createdBy;
 
     private LocalDateTime updatedAt;
 
