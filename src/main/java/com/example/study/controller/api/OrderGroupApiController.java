@@ -17,25 +17,25 @@ public class OrderGroupApiController implements CrudInterface<OrderGroupApiReque
 
     @Override
     @PostMapping("")  // /api/orderGroup
-    public Header<OrderGroupApiResponse> create(Header<OrderGroupApiRequest> request) {
+    public Header<OrderGroupApiResponse> create(@RequestBody Header<OrderGroupApiRequest> request) {
         return orderGroupApiLogicService.create(request);
     }
 
     @Override
     @GetMapping("{id}")  // /api/orderGroup/id
-    public Header<OrderGroupApiResponse> read(Long id) {
+    public Header<OrderGroupApiResponse> read(@PathVariable Long id) {
         return orderGroupApiLogicService.read(id);
     }
 
     @Override
     @PutMapping("")  // /api/orderGroup
-    public Header<OrderGroupApiResponse> update(Header<OrderGroupApiRequest> request) {
+    public Header<OrderGroupApiResponse> update(@RequestBody Header<OrderGroupApiRequest> request) {
         return null;
     }
 
     @Override
     @DeleteMapping("{id}")  // /api/orderGroup/id
-    public Header delete(Long id) {
+    public Header delete(@PathVariable Long id) {
         return null;
     }
 }
