@@ -4,16 +4,20 @@ import com.example.study.ifs.CrudInterface;
 import com.example.study.model.network.Header;
 import com.example.study.model.network.request.UserApiRequest;
 import com.example.study.model.network.response.UserApiResponse;
+import com.example.study.service.UserApiLogicService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
+@Slf4j
 @RestController
 @RequestMapping("/api/user")
 public class UserApiController implements CrudInterface<UserApiRequest, UserApiResponse> {
 
     @Override
     @PostMapping("") // api/user
-    public Header<UserApiResponse> create(@RequestBody UserApiRequest userApiRequest) {
-        return null;
+    public Header<UserApiResponse> create(@RequestBody Header<UserApiRequest> request) {
+        log.info("{}",request);
+        return UserApiLogicService.create(request);
     }
 
     @Override
@@ -24,7 +28,7 @@ public class UserApiController implements CrudInterface<UserApiRequest, UserApiR
 
     @Override
     @PutMapping("") // api/user
-    public Header<UserApiResponse> update(@RequestBody UserApiRequest userApiRequest) {
+    public Header<UserApiResponse> update(@RequestBody Header<UserApiRequest> userApiRequest) {
         return null;
     }
 
