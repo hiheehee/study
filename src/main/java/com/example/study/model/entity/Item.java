@@ -35,7 +35,7 @@ public class Item {
 
     private String content;
 
-    private Integer price;
+    private BigDecimal price;
 
     private String brandName;
 
