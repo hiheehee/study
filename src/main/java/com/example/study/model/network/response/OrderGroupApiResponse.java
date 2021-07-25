@@ -37,4 +37,5 @@ public class OrderGroupApiResponse {
 
     private Long userId;
 
+    private List<ItemApiResponse> itemApiResponseList;
 }
