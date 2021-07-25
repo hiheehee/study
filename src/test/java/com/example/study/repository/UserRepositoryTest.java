@@ -5,6 +5,7 @@ import com.example.study.model.entity.User;
 import java.time.LocalDateTime;
 import java.util.Optional;
 
+import com.example.study.model.enumclass.UserStatus;
 import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +21,7 @@ public class UserRepositoryTest extends StudyApplicationTests {
     public void create() {
         String account = "Test02";
         String password = "Test02";
-        String status = "REGISTERED";
+        UserStatus status = UserStatus.REGISTERED;
         String email = "Test02@gmail.com";
         String phoneNumber = "010-1111-2222";
         LocalDateTime registeredAt = LocalDateTime.now();
