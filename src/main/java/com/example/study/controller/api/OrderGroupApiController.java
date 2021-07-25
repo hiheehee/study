@@ -24,7 +24,7 @@ public class OrderGroupApiController implements CrudInterface<OrderGroupApiReque
     @Override
     @GetMapping("{id}")  // /api/orderGroup/id
     public Header<OrderGroupApiResponse> read(Long id) {
-        return null;
+        return orderGroupApiLogicService.read(id);
     }
 
     @Override
