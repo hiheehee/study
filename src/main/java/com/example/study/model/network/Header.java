@@ -48,7 +48,7 @@ public class Header<T> {
         return (Header<T>) Header.builder()
                 .transactionTime(LocalDateTime.now())
                 .resultCode("ERROR")
-                .description("description")
+                .description(description)
                 .build();
     }
 }

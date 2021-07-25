@@ -22,8 +22,10 @@ public class UserApiLogicService implements CrudInterface<UserApiRequest, UserAp
 
     @Override
     public Header<UserApiResponse> create(Header<UserApiRequest> request) {
+        // 1. request data
         UserApiRequest userApiRequest = request.getData();
 
+        // 2. User 생성
         User user = User.builder()
                 .account(userApiRequest.getAccount())
                 .password(userApiRequest.getPassword())
@@ -35,11 +37,13 @@ public class UserApiLogicService implements CrudInterface<UserApiRequest, UserAp
 
         User newUser = userRepository.save(user);
 
+        // 3. 생성된 데이터 -> UserApiResponse return
         return Header.OK(response(newUser));
     }
 
     @Override
     public Header<UserApiResponse> read(Long id) {
+
         return userRepository.findById(id)
                 .map(user -> Header.OK(response(user)))
                 .orElseGet(
@@ -73,7 +77,14 @@ public class UserApiLogicService implements CrudInterface<UserApiRequest, UserAp
 
     @Override
     public Header delete(Long id) {
-        return null;
+        // 1. id -> repository -> user
+        Optional<User> optional = userRepository.findById(id);
+
+        // 2. repository -> delete
+        return optional.map(user -> {
+            userRepository.delete(user);
+            return Header.OK();
+        }).orElseGet(() -> Header.ERROR("데이터 없음"));
     }
 
     private UserApiResponse response(User user) {
