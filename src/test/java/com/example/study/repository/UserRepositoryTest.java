@@ -34,8 +34,15 @@ public class UserRepositoryTest extends StudyApplicationTests {
         user.setEmail(email);
         user.setPhoneNumber(phoneNumber);
         user.setRegisteredAt(registeredAt);
-        user.setCreatedAt(createdAt);
-        user.setCreatedBy(createdBy);
+        // user.setCreatedAt(createdAt); -> JpaConfig를 사용해서 없어짐
+        // user.setCreatedBy(createdBy); -> JpaConfig를 사용해서 없어짐
+
+        User u = User.builder()
+                .account(account)
+                .password(password)
+                .status(status)
+                .email(email)
+                .build();
 
         User newUser = userRepository.save(user);
         Assert.assertNotNull(newUser);
