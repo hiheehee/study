@@ -5,6 +5,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -12,7 +14,7 @@ import lombok.NoArgsConstructor;
 public class Header<T> {
 
     // api 통신 시간
-    private String transactionTime;
+    private LocalDateTime transactionTime;
 
     // api 응답 콛
     private String resultCode;
@@ -22,4 +24,31 @@ public class Header<T> {
 
     private T data;
 
+    // ok
+    public static <T> Header<T> OK(){
+        return (Header<T>) Header.builder()
+                .transactionTime(LocalDateTime.now())
+                .resultCode("OK")
+                .description("OK")
+                .build();
+    }
+
+    // data ok
+    public static <T> Header<T> OK(T data){
+        return (Header<T>) Header.builder()
+                .transactionTime(LocalDateTime.now())
+                .resultCode("OK")
+                .description("OK")
+                .data(data)
+                .build();
+    }
+
+    // error
+    public static <T> Header<T> error(String description){
+        return (Header<T>) Header.builder()
+                .transactionTime(LocalDateTime.now())
+                .resultCode("ERROR")
+                .description(description)
+                .build();
+    }
 }
