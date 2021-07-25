@@ -1,21 +1,14 @@
 package com.example.study.repository;
 
 import com.example.study.StudyApplicationTests;
-import com.example.study.model.entity.Item;
 import com.example.study.model.entity.User;
 import java.time.LocalDateTime;
 import java.util.Optional;
-// import java.util.Optional;
-// import javax.transaction.Transactional;
 
-// import com.example.study.model.enumclass.UserStatus;
-// import org.junit.jupiter.api.Assertions;
 import org.junit.Assert;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.RequestParam;
 
 public class UserRepositoryTest extends StudyApplicationTests {
 
@@ -25,11 +18,11 @@ public class UserRepositoryTest extends StudyApplicationTests {
 
     @Test
     public void create() {
-        String account = "Test01";
-        String password = "Test01";
+        String account = "Test02";
+        String password = "Test02";
         String status = "REGISTERED";
-        String email = "Test01@gmail.com";
-        String phoneNumber = "010-1111-1111";
+        String email = "Test02@gmail.com";
+        String phoneNumber = "010-1111-2222";
         LocalDateTime registeredAt = LocalDateTime.now();
         LocalDateTime createdAt = LocalDateTime.now();
         String createdBy = "AdminServer";
@@ -51,7 +44,22 @@ public class UserRepositoryTest extends StudyApplicationTests {
     @Test
     public void read(){
         User user = userRepository.findFirstByPhoneNumberOrderByIdDesc("010-1111-1111");
-        Assert.assertNotNull(user);
+
+        user.getOrderGroupList().stream().forEach(orderGroup -> {
+
+            System.out.println("-----주문묶음-----");
+            System.out.println("수령인 " + orderGroup.getRevName());
+            System.out.println("수령지 " + orderGroup.getRevAddress());
+            System.out.println("총금액 " + orderGroup.getTotalPrice());
+            System.out.println("총수량 " + orderGroup.getTotalQuantity());
+
+            System.out.println("-----주문상세-----");
+
+            orderGroup.getOrderDetailList().forEach(orderDetail -> {
+                System.out.println("주문의 상태 : " + orderDetail.getStatus());
+                System.out.println("도착예정일자 : " + orderDetail.getArrivalDate());
+            });
+        });
     }
 
     @Test
