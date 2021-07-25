@@ -31,7 +31,7 @@ public class OrderGroup {
     private String status;
 
     @Enumerated(EnumType.STRING)
-    private String orderType;
+    private OrderType orderType;
 
     private String revAddress;
 
